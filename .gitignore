@@ -1,0 +1,14 @@
+# Python
+*.pyc
+__pycache__/
+# Virtual Environment
+venv/
+env/
+# Django Specific
+db.sqlite3
+# Sensitive Files
+.env
+# IDE Specific
+.vscode/
+.idea/
+staticfiles/

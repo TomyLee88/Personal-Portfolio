@@ -1,0 +1,103 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+<!-- About Me Section -->
+<section id="about" class="py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center mb-4">About Me</h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 order-md-1">
+                <h2 class="mb-3">Hello, I'm Tomislav Colic</h2>
+                <p>I am a passionate full stack software developer based in Dublin. With a strong foundation in web development, I believe in the power of hard work and constant progress.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Education Section -->
+<h2 class="text-center p-5">Education</h2>
+
+<div class="row">
+    <!-- Left Column: Textual Information -->
+    <div class="col-md-6 text-center">
+        <div class="mb-4">
+            <h4 class="font-weight-bold">Diploma in Software Development</h4>
+            <p class="text-muted mb-2">University College Dublin, 2024</p>
+        </div>
+
+        <!-- FreeCodeCamp Certifications -->
+        <div>
+            <h4 class="font-weight-bold">FreeCodeCamp Certifications</h4>
+            <p class="text-muted mb-2">Completed certifications in:</p>
+            <ul class="list-unstyled text-muted">
+                <li>Responsive Web Design</li>
+                <li>JavaScript Algorithms and Data Structures</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Right Column: Diploma Image -->
+    <div class="col-md-6 text-center">
+        <div class="diploma_img_container mb-4">
+            <img src="{% static 'web/img/certificate.jpeg' %}" class="diploma_img" alt="Diploma in Software Development">
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- Skills & Expertise Section -->
+    <h2 class="text-center p-5">Skills & Expertise</h2>
+
+    <div class="row">
+        <!-- Frontend Section -->
+        <div class="col-md-4 text-center">
+            <h3 class="font-weight-bold">Frontend</h3>
+            <ul class="list-unstyled text-muted">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>jQuery</li>
+                <li>Bootstrap</li>
+                <li>Syntax and selectors</li>
+                <li>Front-end use of Python</li>
+            </ul>
+        </div>
+    
+        <!-- Backend Section -->
+        <div class="col-md-4 text-center">
+            <h3 class="font-weight-bold">Backend</h3>
+            <ul class="list-unstyled text-muted">
+                <li>Full-stack frameworks with Django</li>
+                <li>Python</li>
+                <li>Flask</li>
+                <li>SQL</li>
+                <li>How to Use Frameworks</li>
+                <li>APIs</li>
+                <li>Comparing coding language approaches</li>
+            </ul>
+        </div>
+    
+        <!-- Tools Section -->
+        <div class="col-md-4 text-center">
+            <h3 class="font-weight-bold">Tools</h3>
+            <ul class="list-unstyled text-muted">
+                <li>Figma</li>
+                <li>GitHub</li>
+                <li>Git Bash</li>
+                <li>VSCode</li>
+                <li>Postman</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mission Statement Section -->
+    <section id="mission" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">My Mission</h2>
+            <p class="text-center text-muted">"To embrace learning and growth in the field of software development. I believe in the importance of hard work and resilience, and strive to continuously improve my skills and make a positive impact with my work."</p>
+        </div>
+    </section>
+{% endblock %}

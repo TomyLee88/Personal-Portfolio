@@ -1,0 +1,75 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Hero Section: Elegant & Professional Design -->
+<div class="container-fluid bg-dark bckimg text-white py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="display-3 mb-4">Welcome to personal portfolio</h1>
+            <h1 class="display-3 mb-4">Tomislav Colic</h1>
+            <p class="lead mb-4">A full-stack software developer with a keen eye for design and functionality.</p>
+            <a href="{% url 'web-projects' %}" class="btn btn-secondary btn-lg mt-3 custom_nav_link">Explore My Work</a>
+        </div>
+    </div>
+</div>
+
+<!-- About Me Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">About Me</h2>
+        <p class="text-center text-muted">I am a full-stack software developer based in Dublin, specializing in web and software development. I have a passion for creating functional and efficient websites and applications that enhance user experience. <a href="{% url 'web-about' %}">Read more</a></p>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Skills</h2>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h3>Backend</h3>
+                <p class="text-muted">Python/Django/SQL</p>
+                <img src="{% static 'web/img/icons/python.png' %}" alt="Python" class="icon">
+                <img src="{% static 'web/img/icons/django.png' %}" alt="Django" class="icon">
+                <img src="{% static 'web/img/icons/sql.png' %}" alt="SQL" class="icon">
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Frontend</h3>
+                <p class="text-muted">JavaScript/HTML/CSS/Bootstrap</p>
+                <img src="{% static 'web/img/icons/js.png' %}" alt="JavaScript" class="icon">
+                <img src="{% static 'web/img/icons/html-5.png' %}" alt="HTML" class="icon">
+                <img src="{% static 'web/img/icons/css.png' %}" alt="CSS" class="icon">
+                <img src="{% static 'web/img/icons/bootstrap.png' %}" alt="Bootstrap" class="icon">
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Design</h3>
+                <p class="text-muted">Figma</p>
+                <img src="{% static 'web/img/icons/figma.png' %}" alt="Bootstrap" class="icon">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="github-projects" class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Latest GitHub Projects</h2>
+        <div class="row">
+            {% for repo in latest_repos %}
+            <div class="col-md-6">
+                <div class="card text-white bg-dark mb-4 shadow-sm latest_projects">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ repo.name }}</h5>
+                        <p class="card-text">{{ repo.description }}</p>
+                        <a href="{{ repo.html_url }}" class="btn btn-primary" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No recent projects found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

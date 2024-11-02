@@ -1,0 +1,90 @@
+
+.custom_header_properties{
+    margin-bottom: 0 !important;
+    background-color: black;
+}
+.custom_nav_link {
+    transition: color 0.3s !important;
+}
+.custom_nav_link:hover {
+    color: #ffcc00 !important; 
+    text-decoration: none;
+}
+/* Allow the left nav to take available space */
+.nav {
+    flex-grow: 1; 
+}
+.custom_footer{
+    background-color: black;
+}
+/*background img on home page*/
+.bckimg{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/web/img/background.webp");
+    background-size: cover;
+}
+.hero_img{
+    width: 200px;
+    height: auto;
+}
+/*skkill section on home page*/
+.icon {
+    width: 40px; 
+    height: auto; 
+    margin: 10px; 
+}
+.latest_projects:hover{
+    background-color: white;
+    color: black;
+}/* Ensures that all text, including buttons, changes to black */
+.latest_projects:hover .card-title,
+.latest_projects:hover .card-text,
+.latest_projects:hover .btn {
+    color: black; 
+}
+.card-body:hover{
+    background-color: white;
+}
+
+/*about section*/
+.diploma_img_container {
+    max-height: 300px;
+    max-width: 400px;
+    overflow: hidden; 
+    margin: 0 auto; /* Centers the container */
+    text-align: center; /* Center text in the container */
+}
+
+.diploma_img {
+    width: 100%;
+    height: auto; /* Use auto for height to maintain aspect ratio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.diploma_img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/*  project section
+    slider property*/
+.car_item{
+    height: 400px;
+}
+.car_img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+/* change in slider color style of arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #330d0d;
+    border-radius: 50%;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    color: #330d0d; /* This may help change the icon color in some cases */
+}
