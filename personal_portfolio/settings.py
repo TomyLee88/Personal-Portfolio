@@ -22,9 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'IMEt_rcTgSudMXVR_g4jqCUt3waCeROLBnEvZkV7FcmRkT2JkkbBCyc6NATDFapueQg')  # Use environment variable
 
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True' 
+DEBUG = os.environ.get('DJANGO_DEBUG', "False") == 'True' 
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
+
 
 
 # Application definition
@@ -83,7 +84,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') 
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')   
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  
+ 
 
 
 

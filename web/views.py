@@ -72,18 +72,22 @@ def contact_view(request):
         sender = request.POST.get('email')
         recipients = ['tomislavcolic003@gmail.com'] 
 
-        #  print values to the console
-        print(f"Subject: {subject}, Message: {message}, Sender: {sender}")
+        # Format the email body to include the sender's email and message
+        email_body = f"Message from: {sender}\n\n{message}"
+
+        # Print values to the console for debugging
+        print(f"Subject: {subject}, Message: {email_body}, Sender: {sender}")
 
         # Send the email
         try:
-            send_mail(subject, message, sender, recipients)
+            send_mail(subject, email_body, sender, recipients)
             return redirect('success')  # Redirect to success page
         except Exception as e:
             print(f"Error sending email: {e}")
             return HttpResponse("Error sending email", status=500)
 
-    return render(request, 'web/contact.html')  # Render the form for GET requests
+    return render(request, 'web/contact.html')
+
 
 
 #message after sending email
