@@ -32,18 +32,16 @@
     height: auto; 
     margin: 10px; 
 }
-.latest_projects:hover{
-    background-color: white;
-    color: black;
-}/* Ensures that all text, including buttons, changes to black */
-.latest_projects:hover .card-title,
-.latest_projects:hover .card-text,
-.latest_projects:hover .btn {
-    color: black; 
+.latest_projects{
+    border: 2px solid #ffcc00;
+    border-radius: 10%;
 }
-.card-body:hover{
-    background-color: white;
+ .latest_projects:hover .btn {
+    color: #ffcc00; 
 }
+/* .card-body:hover{
+    background-color: white;
+}  */
 
 /*about section*/
 .diploma_img_container {

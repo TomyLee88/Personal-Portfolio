@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+import os
 import requests
-# from .forms import ContactForm
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
@@ -13,84 +13,77 @@ REAL_PROJECTS = {
     "musicnauts.github.io",
     "wisewalletucd"
 }
-#fetch call function
+
+# Fetch call function with GitHub token
 def fetch_github_repos(usernames):
     repos = []
+    GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')  # Add your token as env variable
+    headers = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
+
     for username in usernames:
         url = f'https://api.github.com/users/{username}/repos'
         try:
-            response = requests.get(url)
+            response = requests.get(url, headers=headers)
             response.raise_for_status()
-            repos += response.json() 
+            repos += response.json()
         except requests.exceptions.RequestException as e:
             print(f"Error fetching data from {url}: {e}")
     return repos
 
 def home(request):
-    github_usernames = ['TomyLee88', 'TomislavColic']
-    
+    github_usernames = ['TomyLee88']  # Only your account now
+
     # Fetch all repositories
     repos = fetch_github_repos(github_usernames)
 
     # Filter repos to include only the real projects and add homepage URLs
     filtered_repos = [
-        {**repo, 'live_demo_url': repo.get('homepage')} 
+        {**repo, 'live_demo_url': repo.get('homepage')}
         for repo in repos if repo['name'] in REAL_PROJECTS
     ]
 
-    # Sort combined repos by creation date 
+    # Sort combined repos by creation date
     repos_sorted = sorted(filtered_repos, key=lambda x: x['created_at'], reverse=True)
 
-    return render(request, 'web/home.html', {'latest_repos': repos_sorted[:2]})  # Limit to 2 repos
+    return render(request, 'web/home.html', {'latest_repos': repos_sorted[:2]})
 
 def github_repos(request):
-    github_usernames = ['TomyLee88', 'TomislavColic']
+    github_usernames = ['TomyLee88']
 
-    # Fetch all repositories
     repos = fetch_github_repos(github_usernames)
 
-    # Filter repos to include only the real projects and add homepage URLs
     filtered_repos = [
-        {**repo, 'live_demo_url': repo.get('homepage')} 
+        {**repo, 'live_demo_url': repo.get('homepage')}
         for repo in repos if repo['name'] in REAL_PROJECTS
     ]
 
-    # Pass the combined data 
     return render(request, 'web/projects.html', {'repos': filtered_repos})
 
+# Other views unchanged
 def about(request):
     return render(request, 'web/about.html')
-# contact 
+
 def contact(request):
     return render(request, 'web/contact.html')
-
 
 def contact_view(request):
     if request.method == 'POST':
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         sender = request.POST.get('email')
-        recipients = ['tomislavcolic003@gmail.com'] 
+        recipients = ['tomislavcolic003@gmail.com']
 
-        # Format the email body to include the sender's email and message
         email_body = f"Message from: {sender}\n\n{message}"
-
-        # Print values to the console for debugging
         print(f"Subject: {subject}, Message: {email_body}, Sender: {sender}")
 
-        # Send the email
         try:
             send_mail(subject, email_body, sender, recipients)
-            return redirect('success')  # Redirect to success page
+            return redirect('success')
         except Exception as e:
             print(f"Error sending email: {e}")
             return HttpResponse("Error sending email", status=500)
 
     return render(request, 'web/contact.html')
 
-
-
-#message after sending email
 def success_view(request):
-    return render(request, 'web/success.html')  # Make sure this template exists
-
+    return render(request, 'web/success.html')

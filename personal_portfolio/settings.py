@@ -21,10 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'IMEt_rcTgSudMXVR_g4jqCUt3waCeROLBnEvZkV7FcmRkT2JkkbBCyc6NATDFapueQg')  # Use environment variable
+# this is deployment settings witch i comment for quick fix (not best practice)
+# DEBUG = os.environ.get('DJANGO_DEBUG', "False") == 'True'
+# ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
+# this settings is for development process (not best practice)
+DEBUG = True 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-domain.com']
 
-DEBUG = os.environ.get('DJANGO_DEBUG', "False") == 'True' 
-
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 
 
 
