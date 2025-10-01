@@ -17,7 +17,7 @@ REAL_PROJECTS = {
 # Fetch call function with GitHub token
 def fetch_github_repos(usernames):
     repos = []
-    GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')  # Add your token as env variable
+    GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
     headers = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
 
     for username in usernames:
@@ -31,7 +31,7 @@ def fetch_github_repos(usernames):
     return repos
 
 def home(request):
-    github_usernames = ['TomyLee88']  # Only your account now
+    github_usernames = ['TomyLee88'] 
 
     # Fetch all repositories
     repos = fetch_github_repos(github_usernames)
@@ -62,6 +62,9 @@ def github_repos(request):
 # Other views unchanged
 def about(request):
     return render(request, 'web/about.html')
+
+def caseStudies(request):
+    return render(request, 'web/caseStudies.html')
 
 def contact(request):
     return render(request, 'web/contact.html')

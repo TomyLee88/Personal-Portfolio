@@ -1,0 +1,206 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container my-5 text-center">
+    <h1 class="fw-bold">Case Studies</h1>
+    <p class="text-muted">Deep dives into my most important projects</p>
+</div>
+<!-- ======================= -->
+<!-- Case Study: Portfolio Platform -->
+<!-- ======================= -->
+<section class="container my-5">
+    <div class="row align-items-center mb-5 flex-column flex-md-row">
+        
+        <!-- Left Column: Text -->
+        <div class="col-12 col-md-6 p-3">
+            <h2>Portfolio Platform – Real-World Features & Deployment</h2><br>
+            <a href="https://github.com/TomyLee88/Personal-Portfolio" target="_blank" class="btn btn-dark mb-3 custom_nav_link" >
+                    GitHub
+            </a><br>
+            <h4><strong>Personal portfolio</strong></h4>
+            <p>
+                This project is not just a static portfolio — it's a fully functional web 
+                application built with real-world development practices. The goal was to 
+                create a professional platform that demonstrates secure backend integration, 
+                API usage, and automated deployment.
+            </p>
+            <h4>Tech Stack</h4>
+            <p>
+                <strong>Backend:</strong> Django (Python)<br>
+                <strong>Frontend:</strong> HTML, CSS, Bootstrap<br>
+                <strong>API:</strong> GitHub API (authenticated)<br>
+                <strong>Deployment:</strong> Render<br>
+                <strong>Security:</strong> Environment Variables, OAuth (Google)
+            </p>
+            <h4>Key Features</h4>
+            <ul>
+                <li><strong>Secure Contact Form:</strong> Uses Gmail OAuth and environment variables to protect credentials.</li>
+                <li><strong>GitHub API Integration:</strong> Fetches and displays projects dynamically from authenticated API requests.</li>
+                <li><strong>Latest Projects Section:</strong> Homepage shows most recent GitHub repositories in real time.</li>
+                <li><strong>Auto Deployment:</strong> Render listens for GitHub pushes and updates the live site automatically.</li>
+            </ul>
+            <h4>Challenges Solved</h4>
+            <ul>
+                <li>Protected secret keys using environment variables.</li>
+                <li>Handled GitHub rate limits with authorized API access (5000 requests/hour).</li>
+                <li>Implemented email functionality without exposing credentials.</li>
+                <li>Set up continuous deployment for real-world workflow.</li>
+            </ul>
+            <h4>Outcome</h4>
+            <p>
+                The portfolio showcases my skills while functioning as a real, secure, 
+                dynamic application. It allowed me to apply deployment practices, improve 
+                backend security, and integrate third-party APIs professionally.
+            </p>
+        </div>
+
+        <!-- Right Column: Screenshots -->
+        <div class="col-12 col-md-6 p-3">
+            <div class="p-3 bg-light rounded shadow-sm">
+                <h5 class="mb-3">Screenshots</h5>
+                <div class="row g-3">
+
+                    <!-- Contact Form -->
+                    <div class="col-12">
+                        <img src="{% static 'web/img/screenshots/screenshot9.png' %}" 
+                             class="img-fluid rounded shadow-sm" 
+                             alt="Contact Form Screenshot">
+                         <br>
+                         <br>    
+                        <img src="{% static 'web/img/screenshots/screenshot10.png' %}" 
+                             class="img-fluid rounded shadow-sm" 
+                             alt="Contact Form Screenshot">
+                        <p class="mt-2 text-muted">Secure Contact Form (OAuth + .env)</p>
+                    </div>
+
+                    <!-- Projects Page (GitHub API) -->
+                    <div class="col-12">
+                        <img src="{% static 'web/img/screenshots/screenshot8.png' %}" 
+                             class="img-fluid rounded shadow-sm" 
+                             alt="GitHub Projects Page Screenshot">
+                        <p class="mt-2 text-muted">Dynamic Projects Page using GitHub API</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="case-divider">
+
+
+
+
+<!-- ======================= -->
+<!-- Case Study: Graduation Project -->
+<!-- ======================= -->
+<section class="container my-5" id="graduation-project">
+    <div class="row align-items-center mb-5 flex-column flex-md-row">
+
+        <!-- Left Column: Text -->
+        <div class="col-12 col-md-6 p-3">
+            <h2>Graduation Project – Event Network</h2><br>
+            <div class="mb-4">
+                <a href="https://github.com/TomyLee88/Personal-Portfolio" target="_blank" class="btn btn-dark custom_nav_link">
+                    GitHub
+                </a>
+                <a href="https://graduation-project-i56f.onrender.com/" target="_blank" class="btn btn-primary me-2 custom_nav_link">
+                    Live Demo
+                </a>
+            </div>
+            <h4><strong>Event Network</strong></h4>
+            <p>
+                This is a social web platform where users can register, create posts and events, 
+                connect with friends, and interact through a full CRUD and friendship system. 
+                This project demonstrates my ability to build a functional social application 
+                with multiple features in a short timeframe.
+            </p>
+
+            <h4>Tech Stack</h4>
+            <ul>
+                <li>Backend: Python / Django</li>
+                <li>Frontend: JavaScript / HTML / CSS / Bootstrap</li>
+                <li>Database: SQLite</li>
+                <li>Deployment: Render</li>
+            </ul>
+
+            <h4>Key Features</h4>
+            <ul>
+                <li>User registration and authentication</li>
+                <li>Friendship system: send requests, accept, remove, delete friends</li>
+                <li>Search functionality for users, posts, and events</li>
+                <li>Post and Event creation with full CRUD operations</li>
+                <li>Basic social networking features</li>
+            </ul>
+
+            <h4>Challenges Solved</h4>
+            <p>
+                <strong>Registration & Authentication:</strong> Implemented a secure login system using Django, 
+                handled form validation, and managed user sessions.<br>
+                <strong>Friendship System:</strong> Managed friend requests, accept/remove logic, prevented duplicates and self-requests.<br>
+                <strong>Search & Filtering:</strong> Built efficient queries for users, posts, and events.<br>
+                <strong>Profile & Home Page:</strong> Rendered dynamic content for posts, events, and user data with responsive layout.<br>
+                <strong>Data Integrity:</strong> Ensured all CRUD operations were consistent and safe.
+            </p>
+
+            <h4>Role</h4>
+            <p><strong>Lead Developer:</strong> Solo Project, completed in 1–2 months</p>
+        </div>
+
+        <!-- Right Column: Screenshots -->
+        <div class="col-12 col-md-6 p-3">
+            <div class="p-3 bg-light rounded shadow-sm">
+                <h5 class="mb-3">Screenshots</h5>
+
+                <!-- User Registration & Authentication -->
+                <div class="mb-3 d-flex justify-content-center flex-wrap">
+                    <img src="{% static 'web/img/screenshots/screenshot4.jpeg' %}" 
+                         class="img-fluid rounded shadow-sm mb-2" 
+                         style="max-width: 48%;" 
+                         alt="User Registration Screenshot">
+                    <img src="{% static 'web/img/screenshots/screenshot3.jpeg' %}" 
+                         class="img-fluid rounded shadow-sm mb-2" 
+                         style="max-width: 48%;" 
+                         alt="Authentication Screenshot">
+                    <p class="w-100 mt-2 text-muted text-center">User Registration & Authentication</p>
+                </div>
+
+                <!-- Search & Friendship System -->
+                <div class="mb-3 d-flex justify-content-center flex-wrap">
+                    <img src="{% static 'web/img/screenshots/screenshot5.jpeg' %}" 
+                         class="img-fluid rounded shadow-sm mb-2" 
+                         style="max-width: 48%;" 
+                         alt="Search Screenshot">
+                    <img src="{% static 'web/img/screenshots/screenshot6.jpeg' %}" 
+                         class="img-fluid rounded shadow-sm mb-2" 
+                         style="max-width: 48%;" 
+                         alt="Friend Request Screenshot">
+                    <p class="w-100 mt-2 text-muted text-center">Search & Friendship System</p>
+                </div>
+
+                <!-- Profile Page & Home Page -->
+                <div class="d-flex justify-content-center flex-wrap">
+                    <img src="{% static 'web/img/screenshots/screenshot1.jpeg' %}" 
+                         class="img-fluid rounded shadow-sm mb-2" 
+                         style="max-width: 48%;" 
+                         alt="Profile Page Screenshot">
+                    <img src="{% static 'web/img/screenshots/screenshot2.jpeg' %}" 
+                         class="img-fluid rounded shadow-sm mb-2" 
+                         style="max-width: 48%;" 
+                         alt="Home Page Screenshot">
+                    <p class="w-100 mt-2 text-muted text-center">Profile Page & Home Page</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container text-center my-5">
+    <p class="lead">Want to explore more of my work?</p>
+    <a href="{% url 'web-projects' %}" class="btn btn-dark btn-lg custom_nav_link">View All Projects</a>
+</div>
+
+
+{% endblock %}

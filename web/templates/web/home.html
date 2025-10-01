@@ -8,7 +8,7 @@
             <h1 class="display-3 mb-4">Welcome to personal portfolio</h1>
             <h1 class="display-3 mb-4">Tomislav Colic</h1>
             <p class="lead mb-4">A full-stack software developer with a keen eye for design and functionality.</p>
-            <a href="{% url 'web-projects' %}" class="btn btn-secondary btn-lg mt-3 custom_nav_link">Explore My Work</a>
+            <a href="{% url 'web-caseStudies' %}" class="btn btn-dark btn-lg custom_nav_link">Explore My Work</a>
         </div>
     </div>
 </div>
@@ -17,7 +17,7 @@
 <section id="about" class="py-5">
     <div class="container">
         <h2 class="text-center mb-4">About Me</h2>
-        <p class="text-center text-muted">I am a full-stack software developer based in Dublin, specializing in web and software development. I have a passion for creating functional and efficient websites and applications that enhance user experience. <a href="{% url 'web-about' %}">Read more</a></p>
+        <p class="text-center text-muted">I am a full-stack software developer based in Dublin, specializing in web and software development. I have a passion for creating functional and efficient websites and applications that enhance user experience. <a href="{% url 'web-about' %}">Read more on about page</a></p>
     </div>
 </section>
 
@@ -28,10 +28,11 @@
         <div class="row">
             <div class="col-md-4 text-center">
                 <h3>Backend</h3>
-                <p class="text-muted">Python/Django/SQL</p>
+                <p class="text-muted">Python/Django/SQL/API</p>
                 <img src="{% static 'web/img/icons/python.png' %}" alt="Python" class="icon">
                 <img src="{% static 'web/img/icons/django.png' %}" alt="Django" class="icon">
                 <img src="{% static 'web/img/icons/sql.png' %}" alt="SQL" class="icon">
+                <img src="{% static 'web/img/icons/server.png' %}" alt="API" class="icon">
             </div>
             <div class="col-md-4 text-center">
                 <h3>Frontend</h3>
@@ -42,13 +43,16 @@
                 <img src="{% static 'web/img/icons/bootstrap.png' %}" alt="Bootstrap" class="icon">
             </div>
             <div class="col-md-4 text-center">
-                <h3>Design</h3>
-                <p class="text-muted">Figma</p>
-                <img src="{% static 'web/img/icons/figma.png' %}" alt="Bootstrap" class="icon">
+                <h3>Tools</h3>
+                <p class="text-muted">Figma/GitHub</p>
+                <img src="{% static 'web/img/icons/figma.png' %}" alt="Figma" class="icon">
+                <img src="{% static 'web/img/icons/github.png' %}" alt="GitHub" class="icon">
             </div>
         </div>
     </div>
 </section>
+
+<hr class="my-0">
 
 
 <!-- Projects Section -->
@@ -72,4 +76,14 @@
         </div>
     </div>
 </section>
+
+<p class="text-center text-muted">
+    Want to see how these projects were built?
+</p>
+<div class="text-center mt-2 mb-3">
+    <a href="{% url 'web-caseStudies' %}" class="btn btn-dark btn-lg custom_nav_link">
+        View Full Case Studies
+    </a>
+</div>
+
 {% endblock %}

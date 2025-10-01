@@ -20,10 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'IMEt_rcTgSudMXVR_g4jqCUt3waCeROLBnEvZkV7FcmRkT2JkkbBCyc6NATDFapueQg')  # Use environment variable
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'IMEt_rcTgSudMXVR_g4jqCUt3waCeROLBnEvZkV7FcmRkT2JkkbBCyc6NATDFapueQg')  
 # this is deployment settings witch i comment for quick fix (not best practice)
 DEBUG = os.environ.get('DJANGO_DEBUG', "False") == 'True'
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
+
 
 # Application definition
 
@@ -100,9 +101,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # Added for deployment
-STATIC_ROOT = BASE_DIR / "staticfiles"  # Static files will be collected here by 'python manage.py collectstatic'
-STATIC_URL = "/static/"  # Static files will be served from this URL
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  
+STATIC_ROOT = BASE_DIR / "staticfiles"  
+STATIC_URL = "/static/" 
 
 
 STATICFILES_DIRS = [
