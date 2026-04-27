@@ -113,6 +113,9 @@
                 <h3>{{ repo.name }}</h3>
                 <p>{{ repo.description|default:"Selected software project from my GitHub portfolio." }}</p>
                 <a href="{{ repo.html_url }}" target="_blank" rel="noopener">View on GitHub</a>
+                {% if repo.live_demo_url %}
+                <a href="{{ repo.live_demo_url }}" target="_blank" rel="noopener">Live Demo</a>
+                {% endif %}
             </article>
             {% empty %}
             <p>No portfolio-tagged projects found yet.</p>
