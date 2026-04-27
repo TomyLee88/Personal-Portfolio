@@ -28,7 +28,10 @@
                         <span>{{ item }}</span>
                     {% endfor %}
                 </div>
-                <a href="{{ featured_game.github_url }}" class="btn btn-warning btn-lg" target="_blank" rel="noopener">View Game Repository</a>
+                <div class="hero-actions">
+                    <a href="{{ featured_game.live_url }}" class="btn btn-warning btn-lg" target="_blank" rel="noopener">Play Live Game</a>
+                    <a href="{{ featured_game.github_url }}" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">View Repository</a>
+                </div>
             </div>
             <div class="game-preview compact" aria-label="Munch Run game preview illustration">
                 <div class="game-preview-cloud cloud-one"></div>

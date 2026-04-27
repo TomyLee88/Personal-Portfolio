@@ -81,7 +81,10 @@
                     <span>{{ featured_game.modules }}</span>
                     <span>{{ featured_game.entities }}</span>
                 </div>
-                <a href="{{ featured_game.github_url }}" class="btn btn-warning btn-lg" target="_blank" rel="noopener">View Munch Run</a>
+                <div class="hero-actions">
+                    <a href="{{ featured_game.live_url }}" class="btn btn-warning btn-lg" target="_blank" rel="noopener">Play Munch Run</a>
+                    <a href="{{ featured_game.github_url }}" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">View Code</a>
+                </div>
             </div>
             <div class="game-preview" aria-label="Munch Run game preview illustration">
                 <div class="game-preview-cloud cloud-one"></div>

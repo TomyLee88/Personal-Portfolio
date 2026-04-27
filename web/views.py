@@ -21,6 +21,7 @@ FEATURED_GAME = {
     "entities": "19 enemy/entity files",
     "stack": ["JavaScript", "HTML5 Canvas", "CSS", "Electron", "better-sqlite3"],
     "github_url": "https://github.com/TomyLee88/munch-run",
+    "live_url": "https://munch-run-9cf7.onrender.com/?v=20260427",
 }
 
 def fetch_github_repos(usernames):
