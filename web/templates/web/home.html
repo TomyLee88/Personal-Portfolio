@@ -1,89 +1,120 @@
 {% extends "web/base.html" %}
 {% load static %}
 {% block content %}
-<!-- Hero Section: Elegant & Professional Design -->
-<div class="container-fluid bg-dark bckimg text-white py-5">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h1 class="display-3 mb-4">Welcome to personal portfolio</h1>
-            <h1 class="display-3 mb-4">Tomislav Colic</h1>
-            <p class="lead mb-4">A full-stack software developer with a keen eye for design and functionality.</p>
-            <a href="{% url 'web-caseStudies' %}" class="btn btn-dark btn-lg custom_nav_link">Explore My Work</a>
-        </div>
-    </div>
-</div>
-
-<!-- About Me Section -->
-<section id="about" class="py-5">
+<section class="hero-section">
     <div class="container">
-        <h2 class="text-center mb-4">About Me</h2>
-        <p class="text-center text-muted">I am a full-stack software developer based in Dublin, specializing in web and software development. I have a passion for creating functional and efficient websites and applications that enhance user experience. <a href="{% url 'web-about' %}">Read more on about page</a></p>
-    </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="bg-light py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Skills</h2>
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <h3>Backend</h3>
-                <p class="text-muted">Python/Django/SQL/API</p>
-                <img src="{% static 'web/img/icons/python.png' %}" alt="Python" class="icon">
-                <img src="{% static 'web/img/icons/django.png' %}" alt="Django" class="icon">
-                <img src="{% static 'web/img/icons/sql.png' %}" alt="SQL" class="icon">
-                <img src="{% static 'web/img/icons/server.png' %}" alt="API" class="icon">
-            </div>
-            <div class="col-md-4 text-center">
-                <h3>Frontend</h3>
-                <p class="text-muted">JavaScript/HTML/CSS/Bootstrap</p>
-                <img src="{% static 'web/img/icons/js.png' %}" alt="JavaScript" class="icon">
-                <img src="{% static 'web/img/icons/html-5.png' %}" alt="HTML" class="icon">
-                <img src="{% static 'web/img/icons/css.png' %}" alt="CSS" class="icon">
-                <img src="{% static 'web/img/icons/bootstrap.png' %}" alt="Bootstrap" class="icon">
-            </div>
-            <div class="col-md-4 text-center">
-                <h3>Tools</h3>
-                <p class="text-muted">Figma/GitHub</p>
-                <img src="{% static 'web/img/icons/figma.png' %}" alt="Figma" class="icon">
-                <img src="{% static 'web/img/icons/github.png' %}" alt="GitHub" class="icon">
-            </div>
-        </div>
-    </div>
-</section>
-
-<hr class="my-0">
-
-
-<!-- Projects Section -->
-<section id="github-projects" class="bg-light py-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Latest GitHub Projects</h2>
-        <div class="row">
-            {% for repo in latest_repos %}
-            <div class="col-md-6">
-                <div class="card text-white bg-dark mb-4 shadow-sm latest_projects">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ repo.name }}</h5>
-                        <p class="card-text">{{ repo.description }}</p>
-                        <a href="{{ repo.html_url }}" class="btn btn-primary" target="_blank">View on GitHub</a>
-                    </div>
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <p class="eyebrow">Full-stack software developer</p>
+                <h1>Building useful web apps and game systems with Django, JavaScript, and Python.</h1>
+                <p class="hero-lede">
+                    I am a Dublin-based developer focused on practical software, clean interfaces, and projects
+                    that show real engineering depth.
+                </p>
+                <div class="hero-actions">
+                    <a href="{% url 'web-caseStudies' %}" class="btn btn-primary btn-lg">View Case Studies</a>
+                    <a href="{% url 'web-projects' %}" class="btn btn-outline-light btn-lg">View Projects</a>
+                    <a href="{% url 'web-contact' %}" class="btn btn-outline-light btn-lg">Contact Me</a>
+                </div>
+                <div class="hero-stats">
+                    <span><strong>22k+</strong> game source lines</span>
+                    <span><strong>Django</strong> portfolio backend</span>
+                    <span><strong>Dublin</strong> Ireland</span>
                 </div>
             </div>
+            <div class="hero-portrait-wrap">
+                <img src="{% static 'web/img/tommy.jpg' %}" alt="Tomislav Colic" class="hero-portrait">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-band">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Core skills</p>
+            <h2>Practical development across the stack.</h2>
+        </div>
+        <div class="skill-grid">
+            <article class="skill-panel">
+                <h3>Backend</h3>
+                <p>Python, Django, SQL, APIs, authentication flows, and server-rendered web applications.</p>
+                <div class="icon-row">
+                    <img src="{% static 'web/img/icons/python.png' %}" alt="Python" class="icon">
+                    <img src="{% static 'web/img/icons/django.png' %}" alt="Django" class="icon">
+                    <img src="{% static 'web/img/icons/sql.png' %}" alt="SQL" class="icon">
+                    <img src="{% static 'web/img/icons/server.png' %}" alt="API" class="icon">
+                </div>
+            </article>
+            <article class="skill-panel">
+                <h3>Frontend</h3>
+                <p>Responsive layouts, JavaScript, Bootstrap, CSS architecture, and interface polish.</p>
+                <div class="icon-row">
+                    <img src="{% static 'web/img/icons/js.png' %}" alt="JavaScript" class="icon">
+                    <img src="{% static 'web/img/icons/html-5.png' %}" alt="HTML" class="icon">
+                    <img src="{% static 'web/img/icons/css.png' %}" alt="CSS" class="icon">
+                    <img src="{% static 'web/img/icons/bootstrap.png' %}" alt="Bootstrap" class="icon">
+                </div>
+            </article>
+            <article class="skill-panel">
+                <h3>Product Thinking</h3>
+                <p>Figma, user flows, portfolio storytelling, and building projects that are easy to evaluate.</p>
+                <div class="icon-row">
+                    <img src="{% static 'web/img/icons/figma.png' %}" alt="Figma" class="icon">
+                    <img src="{% static 'web/img/icons/github.png' %}" alt="GitHub" class="icon">
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="featured-game" class="featured-game-section">
+    <div class="container">
+        <div class="project-feature">
+            <div>
+                <p class="eyebrow">Featured game project</p>
+                <h2>{{ featured_game.name }}</h2>
+                <p class="lead">{{ featured_game.tagline }}</p>
+                <p>{{ featured_game.description }}</p>
+                <div class="featured-game-stats">
+                    <span>{{ featured_game.source_lines }}</span>
+                    <span>{{ featured_game.modules }}</span>
+                    <span>{{ featured_game.entities }}</span>
+                </div>
+                <a href="{{ featured_game.github_url }}" class="btn btn-warning btn-lg" target="_blank" rel="noopener">View Munch Run</a>
+            </div>
+            <div class="game-preview" aria-label="Munch Run game preview illustration">
+                <div class="game-preview-cloud cloud-one"></div>
+                <div class="game-preview-cloud cloud-two"></div>
+                <div class="game-preview-platform platform-one"></div>
+                <div class="game-preview-platform platform-two"></div>
+                <div class="game-preview-coin coin-one"></div>
+                <div class="game-preview-coin coin-two"></div>
+                <div class="game-preview-player"></div>
+                <div class="game-preview-enemy"></div>
+                <div class="game-preview-ground"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-band alt-band">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Latest GitHub work</p>
+            <h2>Recent selected projects.</h2>
+        </div>
+        <div class="project-grid">
+            {% for repo in latest_repos %}
+            <article class="project-card">
+                <h3>{{ repo.name }}</h3>
+                <p>{{ repo.description|default:"Selected software project from my GitHub portfolio." }}</p>
+                <a href="{{ repo.html_url }}" target="_blank" rel="noopener">View on GitHub</a>
+            </article>
             {% empty %}
-            <p class="text-center">No recent projects found.</p>
+            <p>No recent projects found.</p>
             {% endfor %}
         </div>
     </div>
 </section>
-
-<p class="text-center text-muted">
-    Want to see how these projects were built?
-</p>
-<div class="text-center mt-2 mb-3">
-    <a href="{% url 'web-caseStudies' %}" class="btn btn-dark btn-lg custom_nav_link">
-        View Full Case Studies
-    </a>
-</div>
-
 {% endblock %}

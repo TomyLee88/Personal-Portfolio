@@ -1,79 +1,121 @@
-<!-- web/projects.html -->
 {% extends "web/base.html" %}
 {% load static %}
 {% block content %}
-<!-- Introduction Section -->
-<div class="intro-section text-center py-5">
-    <h1>Welcome to My Projects</h1>
-    <p>Explore my student work showcasing my learning progress. Each project highlights my journey in software development.</p>
-    <p>Feel free to click through the image slider to view my best project and check out the code on GitHub.</p>
-</div>
-<div id="imageSlider" class="carousel slide" data-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="5" aria-label="Slide 6"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active car_item">
-            <img src="{% static 'web/img/screenshots/screenshot1.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 1">
-        </div>
-        <div class="carousel-item car_item">
-            <img src="{% static 'web/img/screenshots/screenshot2.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 2">
-        </div>
-        <div class="carousel-item car_item">
-            <img src="{% static 'web/img/screenshots/screenshot3.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 3">
-        </div>
-        <div class="carousel-item car_item">
-            <img src="{% static 'web/img/screenshots/screenshot4.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 4">
-        </div>
-        <div class="carousel-item car_item">
-            <img src="{% static 'web/img/screenshots/screenshot5.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 5">
-        </div>
-        <div class="carousel-item car_item">
-            <img src="{% static 'web/img/screenshots/screenshot6.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 6">
-        </div>
-    </div>
-    <a class="carousel-control-prev btn_slider" href="#imageSlider" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon btn_slider" aria-hidden="true"></span>
-        <span class="sr-only btn_slider">Previous</span>
-    </a>
-    <a class="carousel-control-next btn_slider" href="#imageSlider" role="button" data-slide="next">
-        <span class="carousel-control-next-icon btn_slider" aria-hidden="true"></span>
-        <span class="sr-only btn_slider">Next</span>
-    </a>
-</div>
-
-
-<!-- GitHub Repos Section (List Style) -->
-<section id="github-repos" class="py-5 bg-light">
+<section class="page-hero compact-hero">
     <div class="container">
-        <h2 class="text-center mb-4">GitHub Projects</h2>
-        <p class="text-center text-warning mb-4">
-            <b>Important!</b> Please note that some of the live demos may take 30-60 seconds to open due to the free version of Render deployment.
-        </p>
-        <ul class="list-group">
-            {% for repo in repos %}
-                <li class="list-group-item">
-                    <h5>{{ repo.name }}</h5>
-                    <p><strong>Language:</strong> {{ repo.language|default:"N/A" }}</p>
-                    <p>{{ repo.description|default:"No description available" }}</p>
-                    <a href="{{ repo.html_url }}" class="btn btn-secondary btn-sm" target="_blank">View Code</a>
-                    {% if repo.live_demo_url %}
-                        <a href="{{ repo.live_demo_url }}" class="btn btn-success btn-sm" target="_blank">Live Demo</a>
-                    {% endif %}
-                </li>
-            {% empty %}
-                <li class="list-group-item">
-                    <h5>No GitHub repositories found.</h5>
-                </li>
-            {% endfor %}
-        </ul>
+        <p class="eyebrow">Projects</p>
+        <h1>Selected work with code, demos, and project context.</h1>
+        <p>These projects show my progress across Django, JavaScript, databases, deployment, and game development.</p>
     </div>
 </section>
 
+<section class="featured-game-section">
+    <div class="container">
+        <div class="project-feature">
+            <div>
+                <p class="eyebrow">Largest featured project</p>
+                <h2>{{ featured_game.name }}</h2>
+                <p class="lead">{{ featured_game.tagline }}</p>
+                <p>{{ featured_game.description }}</p>
+                <div class="featured-game-stats">
+                    <span>{{ featured_game.source_lines }}</span>
+                    <span>{{ featured_game.repo_lines }}</span>
+                    <span>{{ featured_game.modules }}</span>
+                    <span>{{ featured_game.entities }}</span>
+                </div>
+                <div class="tech-stack">
+                    {% for item in featured_game.stack %}
+                        <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+                <a href="{{ featured_game.github_url }}" class="btn btn-warning btn-lg" target="_blank" rel="noopener">View Game Repository</a>
+            </div>
+            <div class="game-preview compact" aria-label="Munch Run game preview illustration">
+                <div class="game-preview-cloud cloud-one"></div>
+                <div class="game-preview-cloud cloud-two"></div>
+                <div class="game-preview-platform platform-one"></div>
+                <div class="game-preview-platform platform-two"></div>
+                <div class="game-preview-coin coin-one"></div>
+                <div class="game-preview-coin coin-two"></div>
+                <div class="game-preview-player"></div>
+                <div class="game-preview-enemy"></div>
+                <div class="game-preview-ground"></div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="section-band">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Project screenshots</p>
+            <h2>Visual work sample.</h2>
+        </div>
+        <div id="imageSlider" class="carousel slide project-carousel" data-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-target="#imageSlider" data-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-target="#imageSlider" data-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-target="#imageSlider" data-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-target="#imageSlider" data-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-target="#imageSlider" data-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-target="#imageSlider" data-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active car_item">
+                    <img src="{% static 'web/img/screenshots/screenshot1.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 1">
+                </div>
+                <div class="carousel-item car_item">
+                    <img src="{% static 'web/img/screenshots/screenshot2.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 2">
+                </div>
+                <div class="carousel-item car_item">
+                    <img src="{% static 'web/img/screenshots/screenshot3.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 3">
+                </div>
+                <div class="carousel-item car_item">
+                    <img src="{% static 'web/img/screenshots/screenshot4.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 4">
+                </div>
+                <div class="carousel-item car_item">
+                    <img src="{% static 'web/img/screenshots/screenshot5.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 5">
+                </div>
+                <div class="carousel-item car_item">
+                    <img src="{% static 'web/img/screenshots/screenshot6.jpeg' %}" class="d-block w-100 car_img" alt="Screenshot 6">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#imageSlider" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#imageSlider" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="github-repos" class="section-band alt-band">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">GitHub projects</p>
+            <h2>Selected repositories.</h2>
+            <p>Some live demos may take 30-60 seconds to open on free hosting.</p>
+        </div>
+        <div class="project-grid">
+            {% for repo in repos %}
+                <article class="project-card">
+                    <h3>{{ repo.name }}</h3>
+                    <p><strong>Language:</strong> {{ repo.language|default:"N/A" }}</p>
+                    <p>{{ repo.description|default:"No description available" }}</p>
+                    <div class="project-actions">
+                        <a href="{{ repo.html_url }}" target="_blank" rel="noopener">View Code</a>
+                        {% if repo.live_demo_url %}
+                            <a href="{{ repo.live_demo_url }}" target="_blank" rel="noopener">Live Demo</a>
+                        {% endif %}
+                    </div>
+                </article>
+            {% empty %}
+                <p>No GitHub repositories found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}

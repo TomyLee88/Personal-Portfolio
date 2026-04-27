@@ -11,7 +11,24 @@ REAL_PROJECTS = {
     "TommyDB",
     "UCD_python_TomislavColic",
     "musicnauts.github.io",
-    "wisewalletucd"
+    "wisewalletucd",
+    "munch-run"
+}
+
+FEATURED_GAME = {
+    "name": "Munch Run",
+    "tagline": "Canvas platformer game with browser play and Electron desktop packaging.",
+    "description": (
+        "A large JavaScript game project built around canvas rendering, custom physics, "
+        "enemy systems, level progression, audio, saves, and desktop builds for Windows, "
+        "macOS, and Linux."
+    ),
+    "source_lines": "22k+ source lines",
+    "repo_lines": "70k+ repository lines",
+    "modules": "96 JavaScript modules",
+    "entities": "19 enemy/entity files",
+    "stack": ["JavaScript", "HTML5 Canvas", "CSS", "Electron", "better-sqlite3"],
+    "github_url": "https://github.com/TomyLee88/munch-run",
 }
 
 # Fetch call function with GitHub token
@@ -23,7 +40,7 @@ def fetch_github_repos(usernames):
     for username in usernames:
         url = f'https://api.github.com/users/{username}/repos'
         try:
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, timeout=8)
             response.raise_for_status()
             repos += response.json()
         except requests.exceptions.RequestException as e:
@@ -45,7 +62,10 @@ def home(request):
     # Sort combined repos by creation date
     repos_sorted = sorted(filtered_repos, key=lambda x: x['created_at'], reverse=True)
 
-    return render(request, 'web/home.html', {'latest_repos': repos_sorted[:2]})
+    return render(request, 'web/home.html', {
+        'latest_repos': repos_sorted[:2],
+        'featured_game': FEATURED_GAME,
+    })  # Limit to 2 repos
 
 def github_repos(request):
     github_usernames = ['TomyLee88']
@@ -57,7 +77,10 @@ def github_repos(request):
         for repo in repos if repo['name'] in REAL_PROJECTS
     ]
 
-    return render(request, 'web/projects.html', {'repos': filtered_repos})
+    return render(request, 'web/projects.html', {
+        'repos': filtered_repos,
+        'featured_game': FEATURED_GAME,
+    })
 
 # Other views unchanged
 def about(request):
