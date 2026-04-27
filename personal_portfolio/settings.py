@@ -21,9 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'IMEt_rcTgSudMXVR_g4jqCUt3waCeROLBnEvZkV7FcmRkT2JkkbBCyc6NATDFapueQg')  
-# this is deployment settings witch i comment for quick fix (not best practice)
-DEBUG = os.environ.get('DJANGO_DEBUG', "False") == 'True'
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() == 'true'
+
+allowed_hosts = os.environ.get('DJANGO_ALLOWED_HOSTS')
+ALLOWED_HOSTS = (
+    [host.strip() for host in allowed_hosts.split(',') if host.strip()]
+    if allowed_hosts
+    else ['localhost', '127.0.0.1']
+)
 
 
 # Application definition
@@ -101,11 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  
-STATIC_ROOT = BASE_DIR / "staticfiles"  
-STATIC_URL = "/static/" 
-
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "web/static",
 ]
@@ -122,11 +125,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

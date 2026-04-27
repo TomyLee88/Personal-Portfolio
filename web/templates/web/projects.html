@@ -96,8 +96,8 @@
     <div class="container">
         <div class="section-heading">
             <p class="eyebrow">GitHub projects</p>
-            <h2>Selected repositories.</h2>
-            <p>Some live demos may take 30-60 seconds to open on free hosting.</p>
+            <h2>Portfolio-tagged repositories.</h2>
+            <p>Add the <strong>{{ portfolio_topic }}</strong> topic on GitHub to make a public repository appear here. Some live demos may take 30-60 seconds to open on free hosting.</p>
         </div>
         <div class="project-grid">
             {% for repo in repos %}
@@ -113,7 +113,7 @@
                     </div>
                 </article>
             {% empty %}
-                <p>No GitHub repositories found.</p>
+                <p>No portfolio-tagged GitHub repositories found. Add the <strong>{{ portfolio_topic }}</strong> topic to the repos you want to show here.</p>
             {% endfor %}
         </div>
     </div>

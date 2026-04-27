@@ -4,16 +4,8 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
-# List of real projects to display
-REAL_PROJECTS = {
-    "graduation-project",
-    "django_project",
-    "TommyDB",
-    "UCD_python_TomislavColic",
-    "musicnauts.github.io",
-    "wisewalletucd",
-    "munch-run"
-}
+PORTFOLIO_TOPIC = "portfolio"
+GITHUB_USERNAMES = ["TomyLee88"]
 
 FEATURED_GAME = {
     "name": "Munch Run",
@@ -31,7 +23,6 @@ FEATURED_GAME = {
     "github_url": "https://github.com/TomyLee88/munch-run",
 }
 
-# Fetch call function with GitHub token
 def fetch_github_repos(usernames):
     repos = []
     GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
@@ -47,39 +38,35 @@ def fetch_github_repos(usernames):
             print(f"Error fetching data from {url}: {e}")
     return repos
 
+
+def get_portfolio_repos():
+    repos = fetch_github_repos(GITHUB_USERNAMES)
+    portfolio_repos = []
+
+    for repo in repos:
+        topics = repo.get('topics') or []
+        if PORTFOLIO_TOPIC in topics:
+            portfolio_repos.append({**repo, 'live_demo_url': repo.get('homepage')})
+
+    return sorted(portfolio_repos, key=lambda x: x['created_at'], reverse=True)
+
+
 def home(request):
-    github_usernames = ['TomyLee88'] 
-
-    # Fetch all repositories
-    repos = fetch_github_repos(github_usernames)
-
-    # Filter repos to include only the real projects and add homepage URLs
-    filtered_repos = [
-        {**repo, 'live_demo_url': repo.get('homepage')}
-        for repo in repos if repo['name'] in REAL_PROJECTS
-    ]
-
-    # Sort combined repos by creation date
-    repos_sorted = sorted(filtered_repos, key=lambda x: x['created_at'], reverse=True)
+    repos_sorted = get_portfolio_repos()
 
     return render(request, 'web/home.html', {
         'latest_repos': repos_sorted[:2],
         'featured_game': FEATURED_GAME,
+        'portfolio_topic': PORTFOLIO_TOPIC,
     })  # Limit to 2 repos
 
 def github_repos(request):
-    github_usernames = ['TomyLee88']
-
-    repos = fetch_github_repos(github_usernames)
-
-    filtered_repos = [
-        {**repo, 'live_demo_url': repo.get('homepage')}
-        for repo in repos if repo['name'] in REAL_PROJECTS
-    ]
+    filtered_repos = get_portfolio_repos()
 
     return render(request, 'web/projects.html', {
         'repos': filtered_repos,
         'featured_game': FEATURED_GAME,
+        'portfolio_topic': PORTFOLIO_TOPIC,
     })
 
 # Other views unchanged
